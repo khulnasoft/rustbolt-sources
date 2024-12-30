@@ -1,0 +1,53 @@
+[package]
+name = "rustbolt_sources"
+version = "0.4.1"
+edition = "2021"
+authors = ["h-a-n-a <andywangsy@gmail.com>", "ahabhgk <ahabhgk@gmail.com>"]
+resolver = "2"
+license = "MIT"
+description = "Rusty webpack-sources port."
+keywords = ["sources", "sourcemap"]
+repository = "https://github.com/khulnasoft/rustbolt-sources"
+documentation = "https://docs.rs/rustbolt-sources"
+readme = "README.md"
+
+include = ["/src/**/*.rs", "/*.toml", "/LICENSE", "/README.md"]
+
+[lints.rust]
+unsafe_code = "warn"
+missing_docs = "warn"
+
+[lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+unimplemented = "warn"
+print_stdout = "warn"
+print_stderr = "warn"
+
+[[bench]]
+name = "bench"
+path = "benches/bench.rs"
+harness = false
+
+[dependencies]
+serde = { version = "1.0.216", features = ["derive", "rc"] }
+serde_json = "1.0.133"
+dyn-clone = "1.0.17"
+rustc-hash = "2.1.0"
+dashmap = "6.1.0"
+memchr = "2.7.4"
+itertools = "0.13"
+
+
+codspeed-criterion-compat = { version = "2.7.2", default-features = false, optional = true }
+static_assertions = "1.1.0"
+simd-json = "0.14.3"
+
+[dev-dependencies]
+twox-hash = "2.1.0"
+base64-simd = "0.8.0"
+regex = "1.11.1"
+criterion = { version = "0.5.1", default-features = false }
+
+[features]
+codspeed = ["codspeed-criterion-compat"]
